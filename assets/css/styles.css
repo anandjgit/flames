@@ -1,0 +1,346 @@
+/*-------------------------
+	Simple reset
+--------------------------*/
+
+
+*{
+	margin:0;
+	padding:0;
+}
+
+
+/*-------------------------
+	General Styles
+--------------------------*/
+
+body{
+	background-color: #000;
+}
+
+/*----------------------------
+	Styling the forms
+-----------------------------*/
+
+
+#formContainer{
+	width:340px;
+	height:440px;
+	margin:0 auto;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	z-index:1;
+	transform: translate(-50%, -50%);
+	
+	-moz-perspective: 800px;
+	-webkit-perspective: 800px;
+	perspective: 800px;
+}
+
+#formContainer form{
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	
+	/* Enabling 3d space for the transforms */
+	-moz-transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	
+	/* When the forms are flipped, they will be hidden */
+	-moz-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	
+	/* Enabling a smooth animated transition */
+	-moz-transition:0.8s;
+	-webkit-transition:0.8s;
+	transition:0.8s;
+	
+	/* Configure a keyframe animation for Firefox */
+	-moz-animation: pulse 2s infinite;
+	
+	/* Configure it for Chrome and Safari */
+	-webkit-animation: pulse 2s infinite;
+}
+
+
+/* Firefox Keyframe Animation */
+@-moz-keyframes pulse{
+	0%{		box-shadow:0 0 1px #008aff;}
+	50%{	box-shadow:0 0 8px #008aff;}
+	100%{	box-shadow:0 0 1px #008aff;}
+}
+
+/* Webkit keyframe animation */
+@-webkit-keyframes pulse{
+	0%{		box-shadow:0 0 1px #008aff;}
+	50%{	box-shadow:0 0 10px #008aff;}
+	100%{	box-shadow:0 0 1px #008aff;}
+}
+
+#flames{
+	background:url('../img/heartsoflight.jpg') no-repeat;
+	background-size: cover;
+	z-index:100;
+}
+
+.flying-heart {
+	background:url('../img/flyheartred.png') no-repeat;
+	width: 280px;
+	height: 190px;
+	background-size: 100%;
+	margin:10px auto 0;
+}
+
+#recover{
+	background:url('../img/evening.jpeg') no-repeat;
+	background-size: cover;
+	background-position: center;
+	z-index:1;
+	opacity:0;
+	
+	/* Rotating the recover password form by default */
+	-moz-transform:rotateY(180deg);
+	-webkit-transform:rotateY(180deg);
+	transform:rotateY(180deg);
+}
+
+#formContainer.flipped #flames{
+	
+	opacity:0;
+	
+	/**
+	 * Rotating the form when the
+	 * flipped class is added to the container
+	 */
+	
+	-moz-transform:rotateY(-180deg);
+	-webkit-transform:rotateY(-180deg);
+	transform:rotateY(-180deg);
+}
+
+#formContainer.flipped #recover{
+	
+	opacity:1;
+	
+	/* Rotating the recover div into view */
+	-moz-transform:rotateY(0deg);
+	-webkit-transform:rotateY(0deg);
+	transform:rotateY(0deg);
+}
+
+
+/*----------------------------
+	Inputs, Buttons & Links
+-----------------------------*/
+
+
+.overlay {
+	background-color: #fff;
+	opacity: 0.9;
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 998;
+	display: none;
+}
+
+#flipToRecover {
+	display: none;
+}
+
+@keyframes ani{
+	0%{
+	  transform: rotate(45deg) translate(10px,10px) scale(1);
+	}
+	25%{
+	  transform: rotate(45deg) translate(10px,10px) scale(1);
+	}
+	30%{
+	  transform: rotate(45deg) translate(10px,10px) scale(1.4);
+	}
+	50%{
+	  transform: rotate(45deg) translate(10px,10px) scale(1.2);
+	}
+	70%{
+	  transform: rotate(45deg) translate(10px,10px) scale(1.4);
+	}
+	90%{
+	  transform: rotate(45deg) translate(10px,10px) scale(1);
+	}
+	100%{
+	  transform: rotate(45deg) translate(10px,10px) scale(1);
+	}
+  }
+
+.loader {
+	top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  position: absolute;
+  z-index: 9999;
+  display: none;
+}
+
+.loader h3 {
+	margin-top: 40px;
+	font-size: 20px;
+}
+
+.heart {
+  position: relative;
+  width: 55px;
+  height: 55px;
+  background:#ff0036;
+  transform: rotate(45deg) translate(10px,10px);
+  animation: ani 1s linear infinite;
+  left: 79px;
+}
+.heart:before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: #ff0036;
+  position: absolute;
+  top:-50%;
+  left:0;
+  border-radius: 50%;
+}
+.heart:after {
+  content:'';
+  width: 100%;
+  height: 100%;
+  background: #ff0036;
+  position: absolute;
+  bottom:0;
+  right:50%;
+  border-radius: 50%;
+}
+
+.input-effect {
+	position: absolute;
+	width: 90%;
+	margin: 0 5%;
+}
+.him-name {
+	top: 240px;
+}
+.her-name {
+	top: 296px;
+}
+.input-effect input[type="text"] {
+    font: 15px/24px "Lato", Arial, sans-serif;
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
+	letter-spacing: 1px;
+	outline: none;
+}
+.effect-17 ~ label {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 9px;
+    color: #000;
+    transition: 0.3s;
+    z-index: -1;
+    letter-spacing: 0.5px;
+}
+.effect-17 {
+    border: 0;
+    padding: 4px 0;
+    border-bottom: 1px solid #000;
+    background-color: transparent;
+}
+.effect-17 ~ .focus-border {
+	position: absolute; 
+	bottom: 0; 
+	left: 50%; 
+	width: 0; 
+	height: 2px; 
+	background-color: #4caf50; 
+	transition: 0.4s;
+}
+.effect-17:focus ~ .focus-border,
+.has-content.effect-17 ~ .focus-border {
+	width: 100%; transition: 0.4s; left: 0;
+}
+.effect-17:focus ~ label, .has-content.effect-17 ~ label{
+	top: -16px; 
+	font-size: 12px; 
+	color: #122513; 
+	transition: 0.3s;
+}
+
+p {
+	font-size: 12px;
+	position:absolute;
+	top:410px;
+	width: 100%;
+	text-align: center;
+}
+
+h1 {
+	font-size: 60px;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+}
+
+p.quote {
+    position: relative;
+    top: 20px;
+    font-size: 20px;
+    line-height: 40px;
+    color: #aaa;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+input[type=submit]{
+	opacity:0.9;
+	position:absolute;
+	top:350px;
+	width: 90%;
+	height:36px;
+	margin: 0 5%;
+	cursor:pointer;
+	border-radius:6px;
+	box-shadow:0 1px 1px #888;
+	border:none;
+	color:#fff;
+	font:14px/36px 'Segoe UI Light','Segoe UI',Arial,sans-serif;
+	
+	/* CSS3 Gradients */
+	
+	background-image: linear-gradient(bottom, rgb(80,102,127) 50%, rgb(87,109,136) 50%, rgb(106,129,155) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(80,102,127) 50%, rgb(87,109,136) 50%, rgb(106,129,155) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(80,102,127) 50%, rgb(87,109,136) 50%, rgb(106,129,155) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(80,102,127) 50%, rgb(87,109,136) 50%, rgb(106,129,155) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(80,102,127) 50%, rgb(87,109,136) 50%, rgb(106,129,155) 100%);
+	
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.5, rgb(80,102,127)),
+		color-stop(0.5, rgb(87,109,136)),
+		color-stop(1, rgb(106,129,155))
+	);
+}
+
+input[type=submit]:hover{
+	opacity:1;
+}
+
+input::-webkit-input-placeholder {
+    color:#eee;
+}
+

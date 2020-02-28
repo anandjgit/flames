@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Flames Game | Love Games | Match Game | Couple Game | Check your Relationship</title>
+        <meta name="description" content="What type of relationship yours? Lets check it out with flames matching.">
+		<meta name="keywords" content="Flames, Match, Love Game, Couple Game">
+		<meta name="author" content="Anand">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Our CSS stylesheet file -->
+        <link rel="stylesheet" href="assets/css/styles.css" />
+        
+        <!--[if lt IE 9]>
+          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    
+    <body>
+
+		<div id="formContainer">
+			<form id="flames" method="post" action="./">
+				<div class="flying-heart"></div>
+				<div class="input-effect him-name">
+					<input class="effect-17" id="name1" type="text" required>
+					<label>Him Name</label>
+					<span class="focus-border"></span>
+				</div>
+				<div class="input-effect her-name">
+					<input class="effect-17" type="text" id="name2" required>
+					<label>Her Name</label>
+					<span class="focus-border"></span>
+				</div>
+				<input type="submit" name="submit" id="match" value="Match" />
+				<p>Powered by <a href="#">ajApps</a></p>
+			</form>
+			<form id="recover" method="post" action="./">
+				<h1></h1>
+				<p class="quote"></p>
+				<input type="submit" id="flipToLogin" class="flipLink" name="submit" value="Go Back" />
+			</form>
+			<span id="flipToRecover" class="flipLink">flip</span>
+		</div>
+		<div class="overlay"></div>
+		<div class="loader">
+			<div class="heart"></div>
+			<h3>Hold your heart tightly...</h3>
+		</div>
+        
+        <!-- JavaScript includes -->
+		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script src="assets/js/script.js"></script>
+		<script type="text/javascript">
+            $(function(){
+                
+                $('#match').click(function(e){
+                    let name1 = $('#name1').val().replace(/\s+/g, ''),
+                        name2 = $('#name2').val().replace(/\s+/g, '');
+                    
+                    let arr1 = [...name1],
+                        arr2 = [...name2];
+                        for(var i = 0; i < arr1.length;) {
+                            var n = arr1[i]; 
+                            var arr2length = arr2.length;
+                            for(var f = 0; f < arr2.length; f++) {
+                                if (n == arr2[f]) {
+                                    arr1.splice(i, 1); 
+                                    arr2.splice(f, 1); 
+                                    break;
+                                }
+                            }
+                            if(arr2length == arr2.length){
+                                i++
+                            }
+                        }
+                    let arr3 = [...arr1, ...arr2];
+                    var myArry = ["Friend", "Love", "Affection", "Marriage", "Enemy", "Siblings"];
+                    var flamesArray = ["Friend", "Love", "Affection", "Marriage", "Enemy", "Siblings"];
+                    var quotes = [
+                        "\"Best friends going into a relationship is not much of a surprise anymore, because most relationships begin as friendships and grow into something more meaningful.\"",
+                        "\"Wait for a kind of love that will surely last. Love that is pure and real. But take note that it is not easy to find. Only those who persevere will receive it.\"",
+                        "\"Often we withhold our affections, waiting first for love to be extended to us. The irony is that we are loved for loving.\"",
+                        "\"Marriage, like everything else in the world, is holy or unholy depending on the purpose the mind ascribes to it.\"",
+                        "\"It is easy enough to be friendly to one's friends. But to befriend the one who regards himself as your enemy is the quintessence of true religion. The other is mere business.\"",
+                        "\"Siblings will take different paths and life may separate them, but they will forever be bonded by having begun their journey in the same boat.\"",
+                        "\"Your life is full of beauty. Notice it.\""
+                    ];
+                    var start = 0;
+                    for (var f=0; f<5; f++){
+                        if(arr3.length != 0){
+                            for( var i=0; i < arr3.length; i++) {
+                                var pointer = (i + start) % myArry.length;
+                                if(i+1 == arr3.length){
+                                    start = myArry.indexOf(myArry[pointer])+1 != myArry.length ? myArry.indexOf(myArry[pointer]) : 0;
+                                    myArry.splice(myArry.indexOf(myArry[pointer]),1);
+                                }
+                            }
+                        } else {
+                            myArry[0] = "Friend + Love + Affection + Marriage";
+                        }
+					}
+					if (name1 != "" && name2 != ""){
+						$('#recover h1').text(myArry[0]);
+						var flamesArryIndex = flamesArray.indexOf(myArry[0]);
+						flamesArryIndex != -1 ? flamesArryIndex : flamesArryIndex = 6;
+
+						$('#recover .quote').text(quotes[flamesArryIndex]);
+						$('.loader, .overlay').fadeIn();
+
+						setTimeout(function(){
+							$('.loader, .overlay').fadeOut();
+							$('#flipToRecover').trigger('click');
+						}, 4000);
+					}
+				});
+				$('#flames').on('submit', function(e){
+                    e.preventDefault();
+                });
+            });
+        </script>
+
+    </body>
+</html>
+
