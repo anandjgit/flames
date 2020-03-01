@@ -192,6 +192,7 @@ body{
 .loader h3 {
 	margin-top: 40px;
 	font-size: 20px;
+    white-space: nowrap;
 }
 
 .heart {
@@ -201,7 +202,7 @@ body{
   background:#ff0036;
   transform: rotate(45deg) translate(10px,10px);
   animation: ani 1s linear infinite;
-  left: 79px;
+  left: 78px;
 }
 .heart:before {
   content: '';
@@ -296,7 +297,7 @@ h1 {
 
 p.quote {
     position: relative;
-    top: 20px;
+    top: 10px;
     font-size: 20px;
     line-height: 40px;
     color: #aaa;
