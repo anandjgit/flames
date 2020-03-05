@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Title of the document</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <form id="flames">
+            <input type="text" id="name1" required />
+            <input type="text" id="name2" required />
+            <button type="submit" id="match">submit</button>
+        </form>
+
+        <script type="text/javascript">
+            $(function(){
+                
+                $('#match').click(function(e){
+                    var settings = {
+  "url": "https://api.twitter.com/oauth/authenticate?oauth_consumer_key=gQC7z8ljmhbcAnfMRPQjBfUG7&oauth_token=701688875983335424-VIxeZP09LZ45Z5u4onl8p9EnFLHz4eu&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1318622958&oauth_nonce=kYjzVBB8Y0ZFabxSWbWovY3uYSQ2pTgmZeNu2VS4cg&oauth_version=1.0&oauth_signature=Oc6OpeOPD2ULbwW7dmuYahqkbAs=",
+  "method": "GET",
+  "timeout": 0,
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+                    });
+                $('#flames').on('submit', function(e){
+                    e.preventDefault();
+                });
+            });
+        </script>
+    </body>
+</html>
