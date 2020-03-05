@@ -20,8 +20,10 @@ $.ajax({
     headers: {
         'oauth_consumer_key':'gQC7z8ljmhbcAnfMRPQjBfUG7',
         'oauth_token':'370773112-GmHxMAgYyLbNEtIKZeRNFsMKPR9EyMZeS9weJAEb',
-        'Access-Control-Allow-Origin': 'http://ajapps.xyz/',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+        'Access-Control-Max-Age' : '1000'
     },
     method: 'POST',
     success: function(data){
