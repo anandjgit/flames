@@ -14,11 +14,21 @@
             $(function(){
                 
                 $('#match').click(function(e){
-                    var settings = {
-  "url": "https://api.twitter.com/oauth/authenticate?oauth_consumer_key=gQC7z8ljmhbcAnfMRPQjBfUG7&oauth_token=701688875983335424-VIxeZP09LZ45Z5u4onl8p9EnFLHz4eu&oauth_signature_method=HMAC-SHA1&oauth_timestamp=1318622958&oauth_nonce=kYjzVBB8Y0ZFabxSWbWovY3uYSQ2pTgmZeNu2VS4cg&oauth_version=1.0&oauth_signature=Oc6OpeOPD2ULbwW7dmuYahqkbAs=",
-  "method": "POST",
-  "timeout": 0,
-};
+
+$.ajax({
+    url: 'https://api.twitter.com/oauth/authenticate',
+    headers: {
+        'oauth_consumer_key':'gQC7z8ljmhbcAnfMRPQjBfUG7',
+        'oauth_token':'370773112-GmHxMAgYyLbNEtIKZeRNFsMKPR9EyMZeS9weJAEb',
+        'Access-Control-Request-Method':'POST',
+        'Access-Control-Allow-Origin': 'http://ajapps.xyz',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+    },
+    method: 'POST',
+    success: function(data){
+      console.log('succes:');
+    }
+  });
 
 $.ajax(settings).done(function (response) {
   console.log(response);
