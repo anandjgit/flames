@@ -20,8 +20,7 @@ $.ajax({
     headers: {
         'oauth_consumer_key':'gQC7z8ljmhbcAnfMRPQjBfUG7',
         'oauth_token':'370773112-GmHxMAgYyLbNEtIKZeRNFsMKPR9EyMZeS9weJAEb',
-        'Access-Control-Request-Method':'POST',
-        'Access-Control-Allow-Origin': 'http://ajapps.xyz',
+        'Access-Control-Allow-Origin': 'http://ajapps.xyz/',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization'
     },
     method: 'POST',
@@ -30,9 +29,9 @@ $.ajax({
     }
   });
 
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
+// $.ajax(settings).done(function (response) {
+//   console.log(response);
+// });
                     });
                 $('#flames').on('submit', function(e){
                     e.preventDefault();
